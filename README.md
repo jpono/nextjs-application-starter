@@ -67,7 +67,45 @@ curl -X POST "http://localhost:5156/auth/login" \
 
 Copy the `token` from the response for use in subsequent requests.
 
-### 2. Test Client APIs
+### 2. Test User Management APIs
+```bash
+# Get all users
+curl -X GET "http://localhost:5156/api/User" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"
+
+# Create a new user
+curl -X POST "http://localhost:5156/api/User" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -d '{
+    "email": "newuser@example.com",
+    "password": "TempPass123!",
+    "firstName": "John",
+    "lastName": "Doe",
+    "isActive": true
+  }'
+
+# Get user by ID
+curl -X GET "http://localhost:5156/api/User/USER_ID_HERE" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"
+
+# Update user
+curl -X PUT "http://localhost:5156/api/User/USER_ID_HERE" \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE" \
+  -d '{
+    "email": "updateduser@example.com",
+    "firstName": "Jane",
+    "lastName": "Smith",
+    "isActive": true
+  }'
+
+# Delete user
+curl -X DELETE "http://localhost:5156/api/User/USER_ID_HERE" \
+  -H "Authorization: Bearer YOUR_TOKEN_HERE"
+```
+
+### 3. Test Client APIs
 ```bash
 # Get all clients
 curl -X GET "http://localhost:5156/api/Client" \
@@ -120,7 +158,7 @@ curl -X DELETE "http://localhost:5156/api/Client/1" \
   -H "Authorization: Bearer YOUR_TOKEN_HERE"
 ```
 
-### 3. Test Project APIs
+### 4. Test Project APIs
 ```bash
 # Get all projects
 curl -X GET "http://localhost:5156/api/Project" \
@@ -160,11 +198,11 @@ Similar patterns apply for Employee, Equipment, Invoice, Schedule, Document, and
    - Verify redirect to dashboard
 
 2. **Dashboard Navigation**:
-   - Check all navigation links (Projects, Employees, Equipment, Clients, Invoices, Schedule, Documents, Reports)
+   - Check all navigation links (Users, Projects, Employees, Equipment, Clients, Invoices, Schedule, Documents, Reports)
    - Verify each page loads correctly
 
 3. **CRUD Operations**:
-   - **Create**: Add new clients, projects, employees, etc.
+   - **Create**: Add new users, clients, projects, employees, etc.
    - **Read**: View lists and individual items
    - **Update**: Edit existing records
    - **Delete**: Remove records (with confirmation)

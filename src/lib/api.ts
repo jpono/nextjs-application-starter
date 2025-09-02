@@ -160,3 +160,12 @@ export const reportApi = {
   update: (id: number, data: any) => apiClient.put(`/Report/${id}`, data),
   delete: (id: number) => apiClient.delete(`/Report/${id}`),
 }
+
+// User endpoints
+export const userApi = {
+  getAll: () => apiClient.get('/User'),
+  getById: (id: string) => apiClient.get(`/User/${id}`),
+  create: (data: any) => apiClient.post('/User', data),
+  update: (id: string, data: any) => apiClient.put(`/User/${id}`, data),
+  delete: (id: string) => apiClient.delete(`/User/${id}`),
+}

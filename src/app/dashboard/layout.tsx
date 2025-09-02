@@ -14,11 +14,13 @@ import {
   Calendar,
   FolderOpen,
   BarChart3,
-  LogOut
+  LogOut,
+  UserCheck
 } from 'lucide-react'
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
+  { name: 'Users', href: '/dashboard/users', icon: UserCheck },
   { name: 'Projects', href: '/dashboard/projects', icon: Building },
   { name: 'Employees', href: '/dashboard/employees', icon: Users },
   { name: 'Equipment', href: '/dashboard/equipment', icon: Wrench },
